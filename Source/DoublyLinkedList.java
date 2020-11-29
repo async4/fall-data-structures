@@ -112,7 +112,6 @@ public class DoublyLinkedList {
       return this.size;
    }
 
-
    @Override
    public String toString() {
       String pack = new String();
@@ -137,4 +136,5 @@ public class DoublyLinkedList {
 
       return pack;
    }
+
 }

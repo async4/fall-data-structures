@@ -47,7 +47,6 @@ public class Infix {
       }
 
       return result;
-
    }
 
 }

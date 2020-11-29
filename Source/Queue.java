@@ -1,4 +1,5 @@
 public class Queue {
+
    private int length;
    private int size;
    private int[] array;

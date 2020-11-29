@@ -8,4 +8,5 @@ public class Hanoi {
       System.out.printf("%c to %c\n", src, dest);
       Hanoi.solve(n-1, aux, src, dest);
    }
+
 }

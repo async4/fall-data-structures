@@ -1,8 +1,8 @@
 public class Stack {
+
    private int length;
    private int size;
    private int[] array;
-
 
    public Stack(int length) {
       this.length = length;

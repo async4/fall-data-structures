@@ -1,4 +1,5 @@
 public class Array {
+
    private int length;
    private int[] array;
    
@@ -47,6 +48,7 @@ public class Array {
             result = false;
          }
       }
+
       return result;
    }
 
@@ -75,4 +77,5 @@ public class Array {
 
       return pack;
    }
+
 }
