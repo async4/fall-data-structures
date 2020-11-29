@@ -1,4 +1,5 @@
 # FALL DATA STRUCTURES 🚀 
+## ❗ Please send me errors
 
 - [x] Array
 - [x] Bubble Sort

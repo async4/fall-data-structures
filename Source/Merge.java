@@ -40,6 +40,7 @@ public class Merge {
             array[k] = right[j];
             j++;
          }
+
          k++;
       }
       
