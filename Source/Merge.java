@@ -1,6 +1,6 @@
 public class Merge {
 
-   private static int[] gen(int[] array, int start, int end) {
+   private static int[] divide(int[] array, int start, int end) {
       int[] temp = new int[end-start];
       
       int index = 0;
@@ -61,8 +61,8 @@ public class Merge {
    public static int[] sort(int[] array, int size) {
       if (size > 1) {
          int mid = size/2;
-         int[] left = Merge.gen(array, 0, mid);
-         int[] right = Merge.gen(array, mid, size);
+         int[] left = Merge.divide(array, 0, mid);
+         int[] right = Merge.divide(array, mid, size);
 
          Merge.sort(left, Merge.size(left));
          Merge.sort(right, Merge.size(right));
