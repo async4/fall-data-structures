@@ -55,7 +55,6 @@ public class Stack {
             pack += i + " ";
 
       return pack;
-
    }
 
 }

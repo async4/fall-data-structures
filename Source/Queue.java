@@ -50,9 +50,6 @@ public class Queue {
             pack += i + " ";
 
       return pack;
-
-
-
    }
 
 }

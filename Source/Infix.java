@@ -37,7 +37,6 @@ public class Infix {
                result += stack.pop();
 
             stack.push(ch);
-            
          }
       }
 

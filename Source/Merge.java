@@ -1,24 +1,5 @@
 public class Merge {
-   /* 
-    
-       6, 2, 1, 7, 8, 9, 4, 5, 0, 10
-       
-       6 2 1 7 8
-       9 4 5 0 10
 
-       6 2
-       1 7 8
-
-       6 
-       2
-      
-       1 7
-       1
-       7
-
-       8
-
-    */
    private static int[] gen(int[] array, int start, int end) {
       int[] temp = new int[end-start];
       
