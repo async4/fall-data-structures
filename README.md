@@ -17,6 +17,6 @@
  $ chmod +x run.sh
  $ ./run.sh a  # COMPILE, BUILD and RUN
  $ ./run.sh    # RUN
- # ./run.sh c  # COMPILE
- # ./run.sh b  # BUILD
+ $ ./run.sh c  # COMPILE
+ $ ./run.sh b  # BUILD
 ```
