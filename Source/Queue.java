@@ -13,7 +13,6 @@ public class Queue {
    }
 
    public void enque(int data) {
-      
       if (this.full()) {
          System.out.println("Queue is full");
       } else {
