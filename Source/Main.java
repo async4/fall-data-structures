@@ -11,8 +11,6 @@ public class Main {
          "2*2*2/2-1+123*(123-120)+1"
       };
       
-      for (String inf : infix)
-         System.out.println(Infix.toPostfix(inf));
-      
+      System.out.println(ll);
 	}
 }
