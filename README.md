@@ -7,8 +7,8 @@
 - [x] Stack
 - [x] Queue
 - [x] Infix to Postfix
-- [ ] Linked List
-- [ ] Doubly Linked List
+- [x] Linked List
+- [x] Doubly Linked List
 - [ ] Anagram
 - [ ] Hanoi Tower
 - [ ] Merge Sort
