@@ -10,7 +10,7 @@
 - [x] Linked List
 - [x] Doubly Linked List
 - [x] Hanoi Tower
-- [ ] Merge Sort
+- [x] Merge Sort
 
 ``` bash
  $ chmod +x run.sh   # MAKE IT EXECUTABLE
