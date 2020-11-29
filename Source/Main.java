@@ -11,6 +11,14 @@ public class Main {
          "2*2*2/2-1+123*(123-120)+1"
       };
       
+      DoublyLinkedList ll = new DoublyLinkedList();
+      ll.push(3);
+      ll.push(4);
+      ll.push(5);
+      ll.pop();
+      ll.add(2);
+      ll.add(1);
+      ll.insert(9, 2);
       System.out.println(ll);
 	}
 }
