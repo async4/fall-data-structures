@@ -17,6 +17,10 @@
 ``` bash
  $ chmod +x run.sh   # MAKE IT EXECUTABLE
  $ ./run.sh a        # COMPILE, BUILD and RUN
+```
+
+## ⚙ ARGS
+``` bash
  $ ./run.sh          # RUN
  $ ./run.sh c        # COMPILE
  $ ./run.sh b        # BUILD
