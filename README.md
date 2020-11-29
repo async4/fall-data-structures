@@ -9,14 +9,13 @@
 - [x] Infix to Postfix
 - [x] Linked List
 - [x] Doubly Linked List
-- [ ] Anagram
-- [ ] Hanoi Tower
+- [x] Hanoi Tower
 - [ ] Merge Sort
 
 ``` bash
- $ chmod +x run.sh
- $ ./run.sh a  # COMPILE, BUILD and RUN
- $ ./run.sh    # RUN
- $ ./run.sh c  # COMPILE
- $ ./run.sh b  # BUILD
+ $ chmod +x run.sh   # MAKE IT EXECUTABLE
+ $ ./run.sh a        # COMPILE, BUILD and RUN
+ $ ./run.sh          # RUN
+ $ ./run.sh c        # COMPILE
+ $ ./run.sh b        # BUILD
 ```
