@@ -1,4 +1,4 @@
-# fall-data-structures
+# FALL DATA STRUCTURES 🚀 
 
 - [x] Array
 - [x] Bubble Sort
