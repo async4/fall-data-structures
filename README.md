@@ -13,6 +13,7 @@
 - [x] Hanoi Tower
 - [x] Merge Sort
 
+## 🏃🏻‍♂️ RUN
 ``` bash
  $ chmod +x run.sh   # MAKE IT EXECUTABLE
  $ ./run.sh a        # COMPILE, BUILD and RUN
