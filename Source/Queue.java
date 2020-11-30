@@ -1,14 +1,19 @@
+import java.util.Arrays;
+
 public class Queue {
 
    private int length;
    private int size;
    private int[] array;
    
-   int head;
+   private int head;
+   private int tail;
 
    public Queue(int length) {
       this.length = length;
-      this.size = head = 0;
+      this.size = 0;
+      this.head = 0;
+      this.tail = -1;
       this.array = new int[this.length];
    }
 
@@ -16,9 +21,8 @@ public class Queue {
       if (this.full()) {
          System.out.println("Queue is full");
       } else {
-         if (this.head == this.length)
-            this.head = 0;
-         this.array[this.size] = data;
+         this.tail = (this.tail+1) % this.length;
+         this.array[this.tail] = data;
          this.size++;
       }
    }
@@ -27,10 +31,17 @@ public class Queue {
       if (this.empty()) {
          System.out.println("Queue is empty");
       } else {
-         this.array[head] = 0;
-         this.head++;
+         this.head = (this.head+1) % this.length;
          this.size--;
       }
+   }
+
+   public int getHead() {
+      return this.array[this.head];
+   }
+
+   public int getSize() {
+      return this.size;
    }
 
    public boolean empty() {
@@ -45,10 +56,9 @@ public class Queue {
    public String toString() {
       String pack = "";
 
-      for (int i: this.array)
-         if (i != 0)
-            pack += i + " ";
-
+      pack += String.format("Size: %d\nHead: %d(%d) Tail: %d(%d)\nQueue: ", this.size, this.array[this.head], this.head, this.array[this.tail], this.tail);
+      
+      pack += Arrays.toString(this.array);
       return pack;
    }
 
