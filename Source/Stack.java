@@ -1,3 +1,10 @@
+/* 
+   Push Operation : O(1)
+   Pop Operation : O(1)
+   Top Operation : O(1)
+   Search Operation : O(n)
+*/
+
 public class Stack {
 
    private int length;
