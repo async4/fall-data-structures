@@ -12,10 +12,10 @@ public class DoublyLinkedList {
       }
    }
 
-   Node head;
-   Node tail;
+   private Node head;
+   private Node tail;
 
-   int size;
+   private int size;
 
    public DoublyLinkedList() {
       this.head = this.tail = null;
