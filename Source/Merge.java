@@ -1,3 +1,10 @@
+/* 
+   Worst Case Time Complexity [ Big-O ]: O(n*log n)
+   Best Case Time Complexity [Big-omega]: O(n*log n)
+   Average Time Complexity [Big-theta]: O(n*log n)
+   Space Complexity: O(n)
+*/
+
 public class Merge {
 
    private static int[] divide(int[] array, int start, int end) {
