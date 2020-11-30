@@ -1,3 +1,9 @@
+/* 
+   Enqueue: O(1)
+   Dequeue: O(1)
+   Size: O(1)
+*/
+
 import java.util.Arrays;
 
 public class Queue {
