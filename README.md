@@ -1,6 +1,8 @@
 # FALL DATA STRUCTURES 🚀 
 ## ❗ Please send me errors
 
+- [WIKI](https://github.com/async4/fall-data-structures/wiki/FALL-2020,-DATA-STRUCTURES)
+
 - [x] Array
 - [x] Bubble Sort
 - [x] Insertion Sort
