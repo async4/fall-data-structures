@@ -1,3 +1,10 @@
+/* 
+   Worst Case Time Complexity [ Big-O ]: O(n2)
+   Best Case Time Complexity [Big-omega]: O(n2)
+   Average Time Complexity [Big-theta]: O(n2)
+   Space Complexity: O(1)
+*/
+
 public class Selection {
    
    public static int[] sort(int[] array, int size) {
