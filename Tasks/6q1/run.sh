@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-ALL="a"
-COMPILE="c"
-BUILD="b"
-GENERATE="g"
+ALL="-a"
+COMPILE="-c"
+BUILD="-b"
 
 function compile() {
    if [[ ! -d "Bin" ]]; then
@@ -33,18 +32,6 @@ function build() {
    cd ..
 }
 
-function gen() {
-   $(mkdir Source)
-   $(mkdir Build)
-   $(mkdir Bin)
-
-   echo -e 'public class Main {' >> ./Source/Main.java
-   echo -e '\tpublic static void main(String[] args) {' >> ./Source/Main.java
-   echo -e '\t\tSystem.out.println("hello world");' >> ./Source/Main.java
-   echo -e '\t}\n}' >> ./Source/Main.java
-   
-}
-
 
 if [[ -z "$1" ]]; then
    run
@@ -54,8 +41,6 @@ elif [[ "$1" == $BUILD ]]; then
    build 
 elif [[ "$1" == "$ALL" ]]; then
    compile; build; run
-elif [[ "$1" == "$GENERATE" ]]; then
-   gen
 else
    echo "unexpected command."
 fi
