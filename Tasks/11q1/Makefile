@@ -17,7 +17,7 @@ SUFFIX_CLASS	:= *.class
 INFO				:= echo "\e[32m[OK]\e[0m" || echo "\e[31m[ERROR]\e[0m"
 
 
-all: compile
+all: compile run
 
 .PHONY: compile
 compile:
