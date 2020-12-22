@@ -1,5 +1,4 @@
 # FALL DATA STRUCTURES 🚀 
-## ❗ Please send me errors
 
 - [x] [`ARRAY`](https://github.com/async4/fall-data-structures/wiki/ARRAY)
     - [`Array.java`](https://github.com/async4/fall-data-structures/blob/main/Source/Array.java)
