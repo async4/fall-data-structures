@@ -1,5 +1,4 @@
 # FALL DATA STRUCTURES 🚀 
-## ❗ Please send me errors
 
 - [x] [`ARRAY`](https://github.com/async4/fall-data-structures/wiki/ARRAY)
     - [`Array.java`](https://github.com/async4/fall-data-structures/blob/main/Source/Array.java)
@@ -22,16 +21,3 @@
 - [x] [`RECURSION`](https://github.com/async4/fall-data-structures/wiki/RECURSION)
     - [`Hanoi.java`](https://github.com/async4/fall-data-structures/blob/main/Source/Hanoi.java)
     - [`Merge.java`](https://github.com/async4/fall-data-structures/blob/main/Source/Merge.java)
-
-## 🏃 RUN
-``` bash
- $ chmod +x run.sh   # MAKE IT EXECUTABLE
- $ ./run.sh a        # COMPILE, BUILD and RUN
-```
-
-## ⚙ ARGS
-``` bash
- $ ./run.sh          # RUN
- $ ./run.sh c        # COMPILE
- $ ./run.sh b        # BUILD
-```
