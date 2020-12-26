@@ -3,7 +3,6 @@ BUILD_DIR		:= Build/
 MAIN_FILE		:= App
 
 RM					:= rm -rf
-SIZE				:= du -sh
 JAVA				:= java
 JAVAC				:= javac
 
@@ -21,7 +20,7 @@ all: compile run
 
 .PHONY: compile
 compile:
-	@ clear && $(JAVAC) $(JFLAGS) $(SOURCE_DIR)$(SUFFIX_JAVA) &&\
+	@ $(JAVAC) $(JFLAGS) $(SOURCE_DIR)$(SUFFIX_JAVA) &&\
 		$(INFO)
 
 .PHONY: run
