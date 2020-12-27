@@ -1,14 +1,3 @@
-/*******************************************************************************************
-   SIKCA KULLANILDI:
-      https://www.geeksforgeeks.org/avl-tree-set-1-insertion/?ref=lbp
-      https://www.geeksforgeeks.org/avl-tree-set-2-deletion/?ref=lbp
-      https://www.baeldung.com/java-avl-trees
-      http://pages.cs.wisc.edu/~ealexand/cs367/assignments/programming/AVLTree/AVLTree.java
-
-      https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
-      https://visualgo.net/en/bst
-*******************************************************************************************/
-
 import java.util.Scanner;
 
 public class App {
