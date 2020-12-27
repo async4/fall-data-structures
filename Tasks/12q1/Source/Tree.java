@@ -2,20 +2,19 @@ public class Tree {
 
    private Node root;
 
-
-   private int _height(Node proot) {
+   private int height(Node proot) {
       return (proot == null) ? 1 : proot.height;
    }
 
-   private int _bfactor(Node proot) {
-      return (proot == null) ? 0 : _height(proot.left) - _height(proot.right);
+   private void updateHeight(Node proot) {
+      proot.height = 1 + Math.max(height(proot.left), height(proot.right));
    }
 
-   private int _max(int h1, int h2) {
-      return (h1 > h2) ? h1 : h2;
+   private int bfactor(Node proot) {
+      return (proot == null) ? 0 : height(proot.left) - height(proot.right);
    }
 
-   private Node _minNode(Node proot) {
+   private Node minNode(Node proot) {
       Node walk = proot;
       while (walk.left != null) {
          walk = walk.left;
@@ -23,118 +22,182 @@ public class Tree {
 
       return walk;
    }
-   
-   private Node _rotateToRight(Node proot) {
+
+   private Node rotateToRight(Node proot) {
       Node temp = proot.left;
       Node leaf = temp.right;
 
       temp.right = proot;
       proot.left = leaf;
 
-      proot.height = _max(_height(proot.left), _height(proot.right)) + 1;
-      temp.height = _max(_height(temp.left), _height(temp.right)) + 1;
+      updateHeight(proot);
+      updateHeight(temp);
 
       return temp;
    }
 
-   private Node _rotateToLeft(Node proot) {
+   private Node rotateToLeft(Node proot) {
       Node temp = proot.right;
       Node leaf = temp.left;
 
       temp.left = proot;
       proot.right= leaf;
 
-      proot.height = _max(_height(proot.left), _height(proot.right)) + 1;
-      temp.height = _max(_height(temp.left), _height(temp.right)) + 1;
+      updateHeight(proot);
+      updateHeight(temp);
 
       return temp;
    }
 
+   private Node balance(Node proot) {
+      updateHeight(proot);
+      int bfactor = bfactor(proot);
 
-   private Node _add(Node proot, Node payload) {
-      if (proot == null)
-         return payload;
-      else if (payload.data() < proot.data())
-         proot.left = _add(proot.left, payload);
-      else
-         proot.right = _add(proot.right, payload);
-      
-      int lh = _height(proot.left);
-      int rh = _height(proot.right);
-      proot.height = _max(lh, rh) + 1;
-
-      int bfactor = _bfactor(proot);
-
-      if (bfactor > 1 && payload.data() < proot.left.data())
-         return _rotateToRight(proot);
-
-      if (bfactor < -1 && payload.data() > proot.right.data())
-         return _rotateToLeft(proot);
-
-      if (bfactor > 1 && payload.data() > proot.left.data()) {
-         proot.left = _rotateToLeft(proot.left);
-         return _rotateToRight(proot);
+      if (bfactor > 1) {
+         if (height(proot.right.right) > height(proot.right.left)) {
+            proot = rotateToLeft(proot);
+         } else {
+            proot.right = rotateToRight(proot.right);
+            proot = rotateToLeft(proot);
+         }
+      } else if (bfactor < -1) {
+         if (height(proot.left.left) > height(proot.left.right)) {
+            proot = rotateToRight(proot);
+         } else {
+            proot.left = rotateToLeft(proot.left);
+            proot = rotateToRight(proot);
+         }
       }
-
-      if (bfactor < -1 && payload.data() < proot.right.data()) {
-         proot.right = _rotateToRight(proot.right);
-         return _rotateToLeft(proot);
-      }
-
-      return proot;
-   }
-
-   private void _traverse(Node proot) {
-      if (proot != null) {
-         _traverse(proot.left);
-         System.out.printf("\t\t %d %c %d = %d (%s)\n\n", proot.first, proot.operator, proot.second, proot.data(), proot.id);
-         _traverse(proot.right);
-      }
-   }
-
-   private Node _find(Node proot, String id) {
-      if (proot != null) {
-         String nodeId = proot.id.substring(0, 4);
-
-         if (nodeId.equals(id))
-            return proot;
-
-         Node left = _find(proot.left, id);
-         if (left != null)
-            return left;
-
-         Node right = _find(proot.right, id);
-         if (right != null)
-            return right;
-      }
-      return null;
-
-   }
-
-   private Node _delete(Node proot, Node payload) {
-      if (proot == null)
-         return proot;
-      
-      Node left = proot.left;
 
       return proot;
    }
 
    public void add(Node payload) {
-      this.root = _add(this.root, payload);
-      System.out.println(this.root.height);
+      this.root = add(this.root, payload);
+   }
+
+   private Node add(Node proot, Node payload) {
+      if (proot == null)
+         return payload;
+      else if (payload.data < proot.data)
+         proot.left = add(proot.left, payload);
+      else
+         proot.right = add(proot.right, payload);
+
+      updateHeight(proot);
+      int bfactor = bfactor(proot);
+
+      if (bfactor > 1 && payload.data < proot.left.data)
+         return rotateToRight(proot);
+
+      if (bfactor < -1 && payload.data > proot.right.data)
+         return rotateToLeft(proot);
+
+      if (bfactor > 1 && payload.data > proot.left.data) {
+         proot.left = rotateToLeft(proot.left);
+         return rotateToRight(proot);
+      }
+
+      if (bfactor < -1 && payload.data < proot.right.data) {
+         proot.right = rotateToRight(proot.right);
+         return rotateToLeft(proot);
+      }
+
+      return proot;
    }
 
    public void traverse() {
-      _traverse(this.root);
+      traverse(this.root);
    }
 
-   public Node find(String id) {
-      return _find(this.root, id);
+   private void traverse(Node proot) {
+      if (proot != null) {
+         traverse(proot.left);
+         System.out.printf("\t\t %d %c %d = %d\n\n", proot.first, proot.operator, proot.second, proot.data);
+         traverse(proot.right);
+      }
    }
 
-   public void delete(Node payload) {
-      this.root = _delete(this.root, payload);
+   public Node find(int payload) {
+      return find(this.root, payload);
+   }
+
+   private Node find(Node proot, int payload) {
+      if (proot != null) {
+         if (proot.data == payload)
+            return proot;
+
+         Node left = find(proot.left, payload);
+         if (left != null)
+            return left;
+
+         Node right = find(proot.right, payload);
+         if (right != null)
+            return right;
+      }
+
+      return null;
+   }
+
+   public void delete(int payload) {
+      this.root = delete(this.root, payload);
+   }
+
+   private Node delete(Node proot, int payload) {
+      if (proot == null)
+         return proot;
+
+      if (payload < proot.data)
+         proot.left = delete(proot.left, payload);
+      else if (payload > proot.data)
+         proot.right = delete(proot.right, payload);
+      else {
+         if (proot.left == null || proot.right == null) {
+            Node temp = null;
+            if (temp == proot.left)
+               temp = proot.right;
+            else
+               temp = proot.left;
+
+            if (temp == null) {
+               temp = proot;
+               proot = null;
+            } else 
+               proot = temp;
+            
+         } else {
+            Node temp = minNode(proot.right);
+            proot.operator = temp.operator;
+            proot.first = temp.first;
+            proot.second = temp.second;
+            proot.data = temp.data;
+            proot.right = delete(proot.right, temp.data);
+         }
+      }
+
+      if (proot == null)
+         return proot;
+
+      updateHeight(proot);
+      int bfactor = bfactor(proot);
+
+      if (bfactor > 1 && bfactor(proot.left) >= 0)
+         return rotateToRight(proot);
+
+      if (bfactor > 1 && bfactor(proot.left) < 0) {
+         proot.left = rotateToLeft(proot.left);
+         return rotateToRight(proot);
+      }
+
+      if (bfactor < -1 && bfactor(proot.right) <= 0)
+         return rotateToLeft(proot);
+
+      if (bfactor < -1 && bfactor(proot.right) > 0) {
+         proot.right = rotateToRight(proot.right);
+         return rotateToLeft(proot);
+      }
+
+      return proot;
    }
 
 }

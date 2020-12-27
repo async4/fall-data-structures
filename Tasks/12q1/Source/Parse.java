@@ -26,13 +26,13 @@ public class Parse {
    }
 
    private static ArrayList<List<String>> parse(String other) {
-      other = other.replaceAll("\\s+", "");
-      //String pattern = "(?<=\\().*?(?=\\))";
+      other = other.replaceAll("\\s+", ""); // tum bosluklar silinir.
+      //String pattern = "(?<=\\().*?(?=\\))"; // bu regex stringi parantez icindeki ifadelerin ne olduguna bakmiyor.
       String pattern = "(?<=\\()+[\\*\\-\\+\\/]+\\,+[\\d]*\\,+[\\d]*";
       Matcher m = Pattern.compile(pattern).matcher(other);
       ArrayList<List<String>> mat = new ArrayList<List<String>>();
 
-      while (m.find())
+      while (m.find()) // eslesen tum stringler arraylist e eklenir.
          mat.add(Arrays.asList(m.group(0).split(",")));
 
       return mat;

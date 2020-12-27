@@ -1,9 +1,15 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+/*******************************************************************************************
+   SIKCA KULLANILDI:
+      https://www.geeksforgeeks.org/avl-tree-set-1-insertion/?ref=lbp
+      https://www.geeksforgeeks.org/avl-tree-set-2-deletion/?ref=lbp
+      https://www.baeldung.com/java-avl-trees
+      http://pages.cs.wisc.edu/~ealexand/cs367/assignments/programming/AVLTree/AVLTree.java
 
+      https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+      https://visualgo.net/en/bst
+*******************************************************************************************/
+
+import java.util.Scanner;
 
 public class App {
 
@@ -18,38 +24,72 @@ public class App {
 
       while (true) {
          App.ui();
+         int choice = 0;
 
-         switch (new Scanner(System.in).nextInt()) {
+         while (true) {
+            App.ui();
+            try {
+               choice = new Scanner(System.in).nextInt();
+            } catch (Exception e) {
+               System.out.println("invalid");
+               new Scanner(System.in).nextLine();
+               continue;
+            }
+            break;
+         }
+
+         switch (choice) {
             case 1:
+               // GIRDI BIR DUZENLI IFADE OLDUGU ICIN "REGEX" KULLANILDI.
+               // IKI PARANTEZ  ( (+, 10, 2) vb. ) ICINDEKI IFADELERIN HEPSINI OKUYABILIR.
+               // HER PARANTEZLI IFADEDEN SONRA ',(VIRGUL)' KONULMASI GEREKIYOR. YOKSA CALISMAZ.
+               // TEST GIRDISI: {(-, 11,5) , (/, 90, 5), (+, 3, 8), (*,6,11), (+, 60, 8), (+, 10, 4)}
                System.out.print("NODE [(operator, first, second), ...]: ");
-               for (Node node: Parse.get(new Scanner(System.in).nextLine())) 
+               for (Node node: Parse.get(new Scanner(System.in).nextLine()))
                   avl.add(node);
                break;
+
             case 2:
+               // DUZENLEME ISLEMI ICIN ONCE DUZENLENECEK NODE DEGERI BULUNUP TREE DEN SILINIR
+               // TREE DEN SILINDIKTEN SONRA TREE KENDINI TEKRAR DUZENLER
+               // DAHA SONRA SILINEN DEGERIN OZELLIKLERI ILE YENI BIR NODE OLUSTURULUP
+               // TEKRARDAN TREE YE EKLENIR.
                avl.traverse();
-               String id;
+               int value;
+
                while (true) {
-                  System.out.print("Enter the first 4 characters of the id value: ");
-                  id = new Scanner(System.in).nextLine();
-                  if (id.length() != 4) {
-                     System.out.println("the first 4 character.");
-                     continue;
-                  }
+                  System.out.print("Enter value: ");
+                  value = new Scanner(System.in).nextInt();
                   break;
                }
-               Node needtoupdate = avl.find(id);
 
-               if (needtoupdate != null) {
-                  avl.delete(needtoupdate);
-               }
+               Node f = avl.find(value); // Istenilen eleman bulunur
+               Node temp = new Node(f.operator, f.first, f.second); // bulunan node degerleri yeni node a aktarilir.
+               if (f != null)  {
+                  avl.delete(f.data); // Duzenlenmesi istenen node once silinir.
+                  temp.update(); // node guncellenir.
+                  avl.add(temp); // tekrardan tree ye eklenir.
+                  System.out.println("changed: " + temp);
+                  System.out.print("close (enter)...");
+                  new Scanner(System.in).nextLine();
+               } else
+                  System.out.printf("not found: %d\n", value);
+
                break;
+
             case 3:
+               // POSTORDER TRAVERSAL ILE TREE BASTIRILIR.
                avl.traverse();
+               System.out.print("close (enter)...");
+               new Scanner(System.in).nextLine();
+               break;
+
+            default:
+               System.out.println("invalid");
                new Scanner(System.in).nextLine();
                break;
          }
       }
-
    }
 
    public static void main(String[] args) {
