@@ -1,3 +1,3 @@
 ```bash
-make
+  $ make
 ```
