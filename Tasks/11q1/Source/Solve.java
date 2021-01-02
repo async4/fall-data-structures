@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Solve {
-   /*
+
    public static String run(String expression) {
       ArrayList<String> array;
       Node node = new Node(expression);
@@ -42,5 +42,5 @@ public class Solve {
       }
 
    }
-   */
+
 }
