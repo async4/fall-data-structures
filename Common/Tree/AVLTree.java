@@ -42,8 +42,6 @@ public class AVLTree<Key extends Comparable<Key>> {
    }
 
    private Node<Key> remove(Node<Key> rootReference, Key other) {
-
-
       return rootReference;
    }
 
