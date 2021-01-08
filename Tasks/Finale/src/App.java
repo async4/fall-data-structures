@@ -2,8 +2,8 @@ import Manager.Controller;
 
 public class App {
    public static void main(String[] args) {
-      Controller.run();
-
+      Controller controller = new Controller();
+      controller.run();
 
    }
 }
